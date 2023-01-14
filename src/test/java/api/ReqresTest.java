@@ -14,7 +14,7 @@ public class ReqresTest extends Specifications {
     private final static String URL = "https://reqres.in";
 
     /**
-     * проверка, что в ссылке с аватаром, содержится id записи.
+     * Get запрос - проверка, что в ссылке с аватаром, содержится id записи.
      */
     @Test
     public void checkAvatarAndId(){
@@ -39,6 +39,9 @@ public class ReqresTest extends Specifications {
 
         }
 
+    /**
+     * отдельная обработка запроса на проверку email, для тренировки.
+     */
     @Test
     public void checkEmail() {
         List<UserData> users = given()
@@ -47,12 +50,18 @@ public class ReqresTest extends Specifications {
                 .get(URL+ "/api/users?page=2")
                 .then().log().all()
                 .extract().body().jsonPath().getList("data", UserData.class);
-        List<String> emails = users.stream().map(UserData::getEmail).collect(Collectors.toList());
+        users.stream().forEach(x->Assert.assertTrue("Окончание email не соответствет",x.getEmail().contains("@reqres.an")));
+    //2. Вариант через новый список и проверка в цикле
+    /*    List<String> emails = users.stream().map(UserData::getEmail).collect(Collectors.toList());
         for(int i=0;i<emails.size();i++){
             Assert.assertTrue(emails.get(i).contains("@reqres.in"));
-        }
+        }*/
     }
 
+    /**
+     * Post запросы
+     */
+    @Test
 
 
 }
