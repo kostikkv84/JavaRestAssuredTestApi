@@ -1,16 +1,14 @@
 package TestsUI;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
+
 
 public class Tests {
-    private final String base_url = "https://yandex.ru";
+  /*  private final String base_url = "https://yandex.ru";
 
     @Before
     public void SetUp(){
@@ -33,6 +31,6 @@ public class Tests {
         int a = 5;
         Assert.assertEquals(5,a);
     }
-
+*/
 
 }

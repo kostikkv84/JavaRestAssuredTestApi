@@ -22,10 +22,22 @@ public class Specifications {
                 .expectStatusCode(200)
                 .build();
     }
-    // Ответ спецификация на 200 код
+    // Ответ спецификация на 204 код
+    public static ResponseSpecification specResponseOK204(){
+        return new ResponseSpecBuilder()
+                .expectStatusCode(204)
+                .build();
+    }
+    // Ответ спецификация на 400 код
     public static ResponseSpecification specResponseError400(){
         return new ResponseSpecBuilder()
                 .expectStatusCode(400)
+                .build();
+    }
+    // Ответ спецификация на 404 код
+    public static ResponseSpecification specResponseError404(){
+        return new ResponseSpecBuilder()
+                .expectStatusCode(404)
                 .build();
     }
     // Ответ спецификация на  код
