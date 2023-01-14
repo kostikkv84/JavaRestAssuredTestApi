@@ -8,6 +8,7 @@ public class UserData {
     private String last_name;
     private String avatar;
 
+
         /**
          * Создаем конструктор класса
          * @param id

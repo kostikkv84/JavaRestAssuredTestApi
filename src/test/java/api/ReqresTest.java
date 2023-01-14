@@ -3,13 +3,14 @@ package api;
 import io.restassured.http.ContentType;
 import org.junit.Assert;
 import org.junit.Test;
+import spec.Specifications;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.given;
 
-public class ReqresTest {
+public class ReqresTest extends Specifications {
     private final static String URL = "https://reqres.in";
 
     /**
@@ -17,10 +18,10 @@ public class ReqresTest {
      */
     @Test
     public void checkAvatarAndId(){
+        installSpecification(requestSpec(URL),specResponseOK200());
         List<UserData> users = given()
                 .when()
-                .contentType(ContentType.JSON)
-                .get(URL + "/api/users?page=2") // http метод. получаем json
+                .get("/api/users?page=2") // http метод. получаем json
                 .then().log().all()// записываем все в лог
                 // извлекаем body и записываем блок data в созданный класс (в те переменные).
                 .extract().body().jsonPath().getList("data",UserData.class);
