@@ -22,10 +22,10 @@ public class ReqresInTest extends Specifications {
 
     private final static String URL = "https://reqres.in";
 
-   /* @Before
+    @Before
     public void setFilter () {
         RestAssured.filters(new AllureRestAssured());
-    }*/
+    }
 
     /**
      * Get запрос - проверка, что в ссылке с аватаром, содержится id записи.
