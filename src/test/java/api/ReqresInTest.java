@@ -5,9 +5,9 @@ import api.DataReqresIn.*;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import org.junit.Assert;
+
 import org.junit.Before;
 import org.junit.Test;
-import org.testng.annotations.BeforeTest;
 import spec.Specifications;
 
 
@@ -22,10 +22,10 @@ public class ReqresInTest extends Specifications {
 
     private final static String URL = "https://reqres.in";
 
-    @Before
+   /* @Before
     public void setFilter () {
         RestAssured.filters(new AllureRestAssured());
-    }
+    }*/
 
     /**
      * Get запрос - проверка, что в ссылке с аватаром, содержится id записи.
