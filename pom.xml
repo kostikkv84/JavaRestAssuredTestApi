@@ -58,8 +58,14 @@
             <artifactId>json</artifactId>
             <version>${json.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
-
+        <!-- Lombok dependency -->
 
     <build>
         <plugins>
@@ -70,6 +76,13 @@
                 <configuration>
                     <source>${maven.compiler.source}</source> <!--For JAVA 8 use 1.8-->
                     <target>${maven.compiler.target}</target> <!--For JAVA 8 use 1.8-->
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.20</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
 

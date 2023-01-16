@@ -2,17 +2,22 @@ package spec;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.builder.ResponseBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
 
-public class Specifications {
-    // Запрос спецификация
+import java.io.*;
+import java.util.Scanner;
+
+public class SpecificationDummyApi {
     public static RequestSpecification requestSpec(String url) {
         return new RequestSpecBuilder()
                 .setBaseUri(url)
+                .addHeader("app-id", "63c4728cd1e3bfb23062402b")
                 .setContentType(ContentType.JSON)
                 .build();
     }
@@ -56,6 +61,7 @@ public class Specifications {
         RestAssured.requestSpecification = request;
         RestAssured.responseSpecification = response;
     }
+
 
 
 }
