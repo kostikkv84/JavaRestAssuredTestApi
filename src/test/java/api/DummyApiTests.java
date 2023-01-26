@@ -15,6 +15,10 @@ import java.util.List;
 import static io.restassured.RestAssured.given;
 
 public class DummyApiTests extends SpecificationDummyApi {
+    /**
+     * Этот набор тестов в Крыму запускать с VPN подключением (Например Германия)
+     */
+
     private final static String URL = "https://dummyapi.io/data/v1";
 
     @Before

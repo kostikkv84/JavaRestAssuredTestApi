@@ -2,10 +2,7 @@ package api;
 
 import BaseCLasses.FileData;
 import api.DataPetstoreAPI.*;
-import freemarker.core.CSSOutputFormat;
-import io.restassured.http.ContentType;
-import io.restassured.specification.RequestSpecification;
-import io.restassured.specification.ResponseSpecification;
+
 import org.junit.Assert;
 import org.junit.Test;
 import spec.Specifications;
@@ -16,7 +13,9 @@ import static io.restassured.RestAssured.given;
 
 
 public class PetSHopTests extends Specifications {
-
+    /**
+     * End Points
+     */
     private static final String URL = "https://petstore.swagger.io/v2";
     private static String getPetUrl = "/pet/";
     private static String getPetsOnStatusUrl = "/pet/findByStatus";
@@ -123,7 +122,8 @@ public class PetSHopTests extends Specifications {
     @Test
     public void updateNamePetTest (){
         installSpecification(requestSpec(URL),specResponseOK200());
-        UpdNamePetClass updReq = new UpdNamePetClass(2608,"Chappy","available");
+        String idNewPet="2608";
+        UpdNamePetClass updReq = new UpdNamePetClass(2608,"Chapa","available");
         UpdatePetResponce updResp = given()
                 .body(updReq)
                 .when()
@@ -131,8 +131,9 @@ public class PetSHopTests extends Specifications {
                 .then().log().all()
                 .extract().body().as(UpdatePetResponce.class);
         Assert.assertNotNull(updResp);
-        Assert.assertTrue("Имя питомца изменено", updResp.getName().contains("Chappy"));
+        Assert.assertTrue("Имя питомца изменено", updResp.getName().contains("Chapa"));
         System.out.println(updResp.getName());
     }
+
 
 }
