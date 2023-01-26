@@ -38,6 +38,7 @@ public class Specifications {
                 .build();
     }
 
+
     // Ответ спецификация на 404 код
     public static ResponseSpecification specResponseError404() {
         return new ResponseSpecBuilder()

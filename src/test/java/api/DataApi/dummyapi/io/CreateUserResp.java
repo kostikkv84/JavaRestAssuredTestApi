@@ -1,4 +1,4 @@
-package api.dummiapi.io;
+package api.DataApi.dummyapi.io;
 
 import lombok.Getter;
 import lombok.Setter;

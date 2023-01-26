@@ -30,8 +30,9 @@ public class ReqresInTest extends Specifications {
     public void checkAvatarAndId() {
         installSpecification(requestSpec(URL), specResponseOK200());
         List<UserData> users = given()
+                .param("page","2")
                 .when()
-                .get("/api/users?page=2") // http метод. получаем json
+                .get("/api/users") // http метод. получаем json
                 .then().log().all()// записываем все в лог
                 // извлекаем body и записываем блок data в созданный класс (в те переменные).
                 .extract().body().jsonPath().getList("data", UserData.class);
@@ -53,16 +54,18 @@ public class ReqresInTest extends Specifications {
      * отдельная обработка запроса на проверку email, для тренировки.
      */
     @Test
-    public void checkEmail() {
+    public void checkEmails() {
         installSpecification(requestSpec(URL), specResponseOK200());
         List<UserData> users = given()
+                .param("page","2")
                 .when()
-                .get("/api/users?page=2")
+                .get("/api/users")
                 .then().log().all()
                 .extract().body().jsonPath().getList("data", UserData.class);
-        users.stream().forEach(x -> Assert.assertTrue("Окончание email не соответствет", x.getEmail().contains("@reqres.in")));
+        System.out.println(users);
+        users.stream().forEach(x -> Assert.assertTrue("Окончание email не соответствует ожидаемому", x.getEmail().contains("@reqres.in")));
         //2. Вариант через новый список и проверка в цикле
-    /*    List<String> emails = users.stream().map(UserData::getEmail).collect(Collectors.toList());
+        /* List<String> emails = users.stream().map(UserData::getEmail).collect(Collectors.toList());
         for(int i=0;i<emails.size();i++){
             Assert.assertTrue(emails.get(i).contains("@reqres.in"));
         }*/

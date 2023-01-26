@@ -1,22 +1,21 @@
-package api.dummiapi.io;
+package api.DataApi.dummyapi.io;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class CreateUserReq {
+public class PutUpdateUserReq {
     private String firstName;
     private String lastName;
-    private String email;
 
-    public CreateUserReq() {
+    public PutUpdateUserReq() {
         super();
     }
 
-    public CreateUserReq(String firstName, String lastName, String email) {
+    public PutUpdateUserReq(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
     }
+
 }
