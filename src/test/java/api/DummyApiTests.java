@@ -6,6 +6,7 @@ import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import spec.SpecificationDummyApi;
 
@@ -13,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
-
+@Ignore
 public class DummyApiTests extends SpecificationDummyApi {
     /**
      * Этот набор тестов в Крыму запускать с VPN подключением (Например Германия)
