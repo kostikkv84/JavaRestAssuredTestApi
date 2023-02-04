@@ -26,33 +26,10 @@ public class Zarovednik96_Tests extends Specifications {
         RestAssured.filters(new AllureRestAssured());
     }
 
-    // Разобраться с авторизацией
-    @Test
-    public void getPets() {
-        installSpecification(requestSpec(URL), specResponseError401());
-        given()
-
-                .when()
-                .get(URL + "/api/sale/pet/get/")
-                .then().log().all();
-        //  .extract().body().jsonPath().getList(String.valueOf(GetPetsInfo.class));
-    }
-
-    @Test
-    public void forgetEmail() {
-        installSpecification(requestSpec(URL), specResponseOK200());
-        ForgetEmail forgetEmail = given()
-                .when()
-                .get(URL + "/api/personal/user/forgot/")
-                .then().log().all()
-                .extract().body().as(ForgetEmail.class);
-        Assert.assertTrue(forgetEmail.getValue().contains("Не заполнено обязательное поле `Email`"), "Строка не содержится в ответе");
-    }
-
     /**
      * Тест успешной авторизации
      */
-    @Test
+    @Test (priority = 1)
     public void loginSuccessTest() {
         installSpecification(requestSpec(URL), specResponseOK200());
         Boolean authorized = given().contentType("multipart/form-data")
@@ -63,6 +40,51 @@ public class Zarovednik96_Tests extends Specifications {
                 .then().log().all()
                 .extract().path("value.authorized");
         Assert.assertTrue(authorized);
+    }
+
+    // Разобраться с авторизацией
+    @Test (priority = 2)
+    public void getPets() {
+        installSpecification(requestSpec(URL), specResponseError401());
+        given()
+
+                .when()
+                .get(URL + "/api/sale/pet/get/")
+                .then().log().all();
+        //  .extract().body().jsonPath().getList(String.valueOf(GetPetsInfo.class));
+    }
+
+    /**
+     * Отправка запроса на восстановление пароля при указании Email - Тест
+     */
+    @Test
+    public void forgetEmail() {
+        installSpecification(requestSpec(URL), specResponseOK200());
+        List<String> forgetEmail = given()
+                .contentType("multipart/form-data")
+                .multiPart("email", "koskv@list.ru")
+                .when()
+                .get(URL + "/api/personal/user/forgot/")
+                .then().log().all()
+                .extract().path("value");
+        System.out.println(forgetEmail);
+    //    Assert.assertTrue(forgetEmail.getValue().contains("Не заполнено обязательное поле `Email`"), "Строка не содержится в ответе");
+    }
+
+    /**
+     * Восстановление пароля если не указать Email - Тест
+     */
+    @Test
+    public void emailSHoudBeExistTest() {
+        installSpecification(requestSpec(URL), specResponseOK200());
+        List<String> forgetEmail = given()
+                .contentType("multipart/form-data")
+                .multiPart("email", "koskv@list.ru")
+                .when()
+                .get(URL + "/api/personal/user/forgot/")
+                .then().log().all()
+                .extract().path("value");
+             Assert.assertTrue(forgetEmail.contains("Не заполнено обязательное поле `Email`"), "Строка не содержится в ответе");
     }
 
     /**
