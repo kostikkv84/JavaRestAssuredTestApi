@@ -13,7 +13,8 @@ public class PutUpdateUserResp {
     private String registerDate;
     private String updatedDate;
 
-    public PutUpdateUserResp() {super();
+    public PutUpdateUserResp() {
+        super();
     }
 
     public PutUpdateUserResp(String id, String firstName, String lastName, String email, String registerDate, String updatedDate) {

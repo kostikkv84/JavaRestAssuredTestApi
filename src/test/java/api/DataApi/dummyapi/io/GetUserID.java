@@ -19,7 +19,8 @@ public class GetUserID {
     private String registerDate;
     private String updatedDate;
 
-    public GetUserID() {super();
+    public GetUserID() {
+        super();
     }
 
     public GetUserID(String id, String title, String firstName, String lastName, String picture, String gender, String email, String dateOfBirth, String phone, GetUserIDLocation location, String registerDate, String updatedDate) {

@@ -7,7 +7,9 @@ public class ResourceListResponse {
     private String color;
     private String pantone_value;
 
-    public ResourceListResponse() {  super();     }
+    public ResourceListResponse() {
+        super();
+    }
 
     public ResourceListResponse(Integer id, String name, Integer year, String color, String pantone_value) {
         this.id = id;

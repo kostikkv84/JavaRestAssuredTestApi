@@ -13,7 +13,8 @@ public class CreateUserResp {
     private String registerDate;
     private String updatedDate;
 
-    public CreateUserResp() {super();
+    public CreateUserResp() {
+        super();
     }
 
     public CreateUserResp(String id, String firstName, String lastName, String email, String registerDate, String updatedDate) {

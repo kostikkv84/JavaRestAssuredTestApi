@@ -1,12 +1,10 @@
 package api.DataPetstoreAPI;
 
-import lombok.*;
-
-import java.util.ArrayList;
 public class PhotoUrls {
     private String photoUrls;
 
-    public PhotoUrls() {super();
+    public PhotoUrls() {
+        super();
     }
 
     public PhotoUrls(String photoUrls) {

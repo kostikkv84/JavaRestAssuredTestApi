@@ -37,6 +37,11 @@ public class Specifications {
                 .expectStatusCode(400)
                 .build();
     }
+    public static ResponseSpecification specResponseError401() {
+        return new ResponseSpecBuilder()
+                .expectStatusCode(401)
+                .build();
+    }
 
 
     // Ответ спецификация на 404 код

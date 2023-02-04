@@ -8,7 +8,8 @@ import lombok.Setter;
 public class DeleteIdUser {
     private String id;
 
-    public DeleteIdUser() { super();
+    public DeleteIdUser() {
+        super();
     }
 
     public DeleteIdUser(String id) {

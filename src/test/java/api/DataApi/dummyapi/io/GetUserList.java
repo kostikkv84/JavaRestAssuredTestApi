@@ -12,7 +12,8 @@ public class GetUserList {
     private String lastName;
     private String picture;
 
-    public GetUserList() {super();
+    public GetUserList() {
+        super();
     }
 
     public GetUserList(String id, String title, String firstName, String lastName, String picture) {
@@ -22,7 +23,6 @@ public class GetUserList {
         this.lastName = lastName;
         this.picture = picture;
     }
-
 
 
 }

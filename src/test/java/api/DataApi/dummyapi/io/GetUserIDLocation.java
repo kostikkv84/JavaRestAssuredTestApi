@@ -12,7 +12,8 @@ public class GetUserIDLocation {
     private String country;
     private String timezone;
 
-    public GetUserIDLocation() {super();
+    public GetUserIDLocation() {
+        super();
     }
 
     public GetUserIDLocation(String street, String city, String state, String country, String timezone) {

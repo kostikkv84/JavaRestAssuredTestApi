@@ -6,7 +6,8 @@ import lombok.Getter;
 public class GetUserError {
     private String error;
 
-    public GetUserError() {super();
+    public GetUserError() {
+        super();
     }
 
     public GetUserError(String error) {

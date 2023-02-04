@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "photoUrls": {
+      "type": ["array","null"],
+      "items": {}
+    },
+    "tags": {
+      "type": ["array","null"],
+      "items": {}
+    },
+    "status": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "photoUrls",
+    "tags",
+    "status"
+  ]
+}

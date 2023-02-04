@@ -10,7 +10,8 @@ public class PetNotFoundClass {
     private String type;
     private String message;
 
-    public PetNotFoundClass() {super();
+    public PetNotFoundClass() {
+        super();
     }
 
     public PetNotFoundClass(Integer code, String type, String message) {

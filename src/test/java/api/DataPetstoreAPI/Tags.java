@@ -1,13 +1,11 @@
 package api.DataPetstoreAPI;
 
-import lombok.*;
-
-
 public class Tags {
     private Long id;
     private String name;
 
-    public Tags() {super();
+    public Tags() {
+        super();
     }
 
     public Tags(Long id, String name) {
@@ -19,12 +17,12 @@ public class Tags {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {

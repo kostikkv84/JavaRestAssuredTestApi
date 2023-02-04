@@ -3,9 +3,9 @@ package api;
 import api.DataReqresIn.*;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import spec.Specifications;
 
 import java.time.Clock;
@@ -18,7 +18,7 @@ public class ReqresInTest extends Specifications {
 
     private final static String URL = "https://reqres.in";
 
-    @Before
+    @BeforeTest
     public void setFilter() {
         RestAssured.filters(new AllureRestAssured());
     }
@@ -30,7 +30,7 @@ public class ReqresInTest extends Specifications {
     public void checkAvatarAndId() {
         installSpecification(requestSpec(URL), specResponseOK200());
         List<UserData> users = given()
-                .param("page","2")
+                .param("page", "2")
                 .when()
                 .get("/api/users") // http метод. получаем json
                 .then().log().all()// записываем все в лог
@@ -57,13 +57,13 @@ public class ReqresInTest extends Specifications {
     public void checkEmails() {
         installSpecification(requestSpec(URL), specResponseOK200());
         List<UserData> users = given()
-                .param("page","2")
+                .param("page", "2")
                 .when()
                 .get("/api/users")
                 .then().log().all()
                 .extract().body().jsonPath().getList("data", UserData.class);
         System.out.println(users);
-        users.stream().forEach(x -> Assert.assertTrue("Окончание email не соответствует ожидаемому", x.getEmail().contains("@reqres.in")));
+        users.stream().forEach(x -> Assert.assertTrue(x.getEmail().contains("@reqres.in"), "Окончание email не соответствует ожидаемому"));
         //2. Вариант через новый список и проверка в цикле
         /* List<String> emails = users.stream().map(UserData::getEmail).collect(Collectors.toList());
         for(int i=0;i<emails.size();i++){
@@ -88,8 +88,8 @@ public class ReqresInTest extends Specifications {
                 .post("/api/register")
                 .then().log().all()
                 .extract().as(SuccessReg.class); // так как ответ простой без Root можно сразу записать данные в класс
-        Assert.assertEquals("Проверка полученного ID", id, successReg.getId());
-        Assert.assertEquals("Проверка полученного токена", token, successReg.getToken());
+        Assert.assertEquals(id, successReg.getId(), "Проверка полученного ID");
+        Assert.assertEquals(token, successReg.getToken(),"Проверка полученного токена");
     }
 
     @Test

@@ -1,0 +1,358 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "value": {
+      "type": "object",
+      "properties": {
+        "basket": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "ID": {
+                  "type": "string"
+                },
+                "LID": {
+                  "type": "string"
+                },
+                "MODULE": {
+                  "type": "string"
+                },
+                "PRODUCT_ID": {
+                  "type": "string"
+                },
+                "QUANTITY": {
+                  "type": "string"
+                },
+                "WEIGHT": {
+                  "type": "string"
+                },
+                "DELAY": {
+                  "type": "string"
+                },
+                "CAN_BUY": {
+                  "type": "string"
+                },
+                "CUSTOM_PRICE": {
+                  "type": "string"
+                },
+                "BASE_PRICE": {
+                  "type": "number"
+                },
+                "PRODUCT_PRICE_ID": {
+                  "type": "string"
+                },
+                "PRICE_TYPE_ID": {
+                  "type": "string"
+                },
+                "CURRENCY": {
+                  "type": "string"
+                },
+                "BARCODE_MULTI": {
+                  "type": "string"
+                },
+                "RESERVED": {
+                  "type": "string"
+                },
+                "RESERVE_QUANTITY": {
+                  "type": ["string", "null"]
+                },
+                "NAME": {
+                  "type": "string"
+                },
+                "CATALOG_XML_ID": {
+                  "type": "string"
+                },
+                "VAT_RATE": {
+                  "type": "string"
+                },
+                "NOTES": {
+                  "type": "string"
+                },
+                "DISCOUNT_PRICE": {
+                  "type": "number"
+                },
+                "PRODUCT_PROVIDER_CLASS": {
+                  "type": "string"
+                },
+                "CALLBACK_FUNC": {
+                  "type": ["string", "null"]
+                },
+                "ORDER_CALLBACK_FUNC": {
+                  "type": ["string", "null"]
+                },
+                "PAY_CALLBACK_FUNC": {
+                  "type": ["string", "null"]
+                },
+                "CANCEL_CALLBACK_FUNC": {
+                  "type": ["string", "null"]
+                },
+                "DIMENSIONS": {
+                  "type": "string"
+                },
+                "TYPE": {
+                  "type": ["string", "null"]
+                },
+                "SET_PARENT_ID": {
+                  "type": ["string", "null"]
+                },
+                "DETAIL_PAGE_URL": {
+                  "type": "string"
+                },
+                "FUSER_ID": {
+                  "type": "string"
+                },
+                "MEASURE_CODE": {
+                  "type": "string"
+                },
+                "MEASURE_NAME": {
+                  "type": "string"
+                },
+                "ORDER_ID": {
+                  "type": ["string", "null"]
+                },
+                "DATE_INSERT": {
+                  "type": "object"
+                },
+                "DATE_UPDATE": {
+                  "type": "object"
+                },
+                "PRODUCT_XML_ID": {
+                  "type": "string"
+                },
+                "SUBSCRIBE": {
+                  "type": "string"
+                },
+                "RECOMMENDATION": {
+                  "type": ["string", "null"]
+                },
+                "VAT_INCLUDED": {
+                  "type": "string"
+                },
+                "SORT": {
+                  "type": "string"
+                },
+                "DATE_REFRESH": {
+                  "type": "null"
+                },
+                "DISCOUNT_NAME": {
+                  "type": "null"
+                },
+                "DISCOUNT_VALUE": {
+                  "type": "null"
+                },
+                "DISCOUNT_COUPON": {
+                  "type": "null"
+                },
+                "XML_ID": {
+                  "type": "string"
+                },
+                "MARKING_CODE_GROUP": {
+                  "type": "null"
+                },
+                "BONUS_IN": {
+                  "type": "number"
+                },
+                "SECTION_NAME": {
+                  "type": "string"
+                },
+                "SECTION_ID": {
+                  "type": "string"
+                },
+                "PICTURE": {
+                  "type": "string"
+                },
+                "BREND": {
+                  "type": "object",
+                  "properties": {
+                    "NAME": {
+                      "type": "string"
+                    },
+                    "CODE": {
+                      "type": "string"
+                    },
+                    "VALUE": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "NAME",
+                    "CODE",
+                    "VALUE"
+                  ]
+                },
+                "AVAILABLE_QUANTITY": {
+                  "type": "integer"
+                },
+                "DISCOUNT": {
+                  "type": "null"
+                },
+                "DISCOUNT_PERCENT": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "ID",
+                "LID",
+                "MODULE",
+                "PRODUCT_ID",
+                "QUANTITY",
+                "WEIGHT",
+                "DELAY",
+                "CAN_BUY",
+                "CUSTOM_PRICE",
+                "BASE_PRICE",
+                "PRODUCT_PRICE_ID",
+                "PRICE_TYPE_ID",
+                "CURRENCY",
+                "BARCODE_MULTI",
+                "RESERVED",
+                "RESERVE_QUANTITY",
+                "NAME",
+                "CATALOG_XML_ID",
+                "VAT_RATE",
+                "NOTES",
+                "DISCOUNT_PRICE",
+                "PRODUCT_PROVIDER_CLASS",
+                "CALLBACK_FUNC",
+                "ORDER_CALLBACK_FUNC",
+                "PAY_CALLBACK_FUNC",
+                "CANCEL_CALLBACK_FUNC",
+                "DIMENSIONS",
+                "TYPE",
+                "SET_PARENT_ID",
+                "DETAIL_PAGE_URL",
+                "FUSER_ID",
+                "MEASURE_CODE",
+                "MEASURE_NAME",
+                "ORDER_ID",
+                "DATE_INSERT",
+                "DATE_UPDATE",
+                "PRODUCT_XML_ID",
+                "SUBSCRIBE",
+                "RECOMMENDATION",
+                "VAT_INCLUDED",
+                "SORT",
+                "DATE_REFRESH",
+                "DISCOUNT_NAME",
+                "DISCOUNT_VALUE",
+                "DISCOUNT_COUPON",
+                "XML_ID",
+                "MARKING_CODE_GROUP",
+                "BONUS_IN",
+                "SECTION_NAME",
+                "SECTION_ID",
+                "PICTURE",
+                "BREND",
+                "AVAILABLE_QUANTITY",
+                "DISCOUNT",
+                "DISCOUNT_PERCENT"
+              ]
+            }
+          ]
+        },
+        "total": {
+          "type": "object",
+          "properties": {
+            "QUANTITY": {
+              "type": "integer"
+            },
+            "WEIGHT": {
+              "type": "integer"
+            },
+            "BASE_PRICE": {
+              "type": "number"
+            },
+            "DISCOUNT_PRICE": {
+              "type": "number"
+            },
+            "DISCOUNT": {
+              "type": "integer"
+            },
+            "BONUS_DATA": {
+              "type": "object",
+              "properties": {
+                "maxBonus": {
+                  "type": "string"
+                },
+                "max_bonus": {
+                  "type": "string"
+                },
+                "max_bonus_out": {
+                  "type": "string"
+                },
+                "maxBillBonus": {
+                  "type": "string"
+                },
+                "max_bill_bonus": {
+                  "type": "string"
+                },
+                "max_bill_bonus_out": {
+                  "type": "string"
+                },
+                "bonus_balance": {
+                  "type": "integer"
+                },
+                "balance": {
+                  "type": "integer"
+                },
+                "bonus_sum_termless": {
+                  "type": "integer"
+                },
+                "bonus_card_id": {
+                  "type": "string"
+                },
+                "bonus_in": {
+                  "type": "number"
+                },
+                "bonus_out": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "maxBonus",
+                "max_bonus",
+                "max_bonus_out",
+                "maxBillBonus",
+                "max_bill_bonus",
+                "max_bill_bonus_out",
+                "bonus_balance",
+                "balance",
+                "bonus_sum_termless",
+                "bonus_card_id",
+                "bonus_in",
+                "bonus_out"
+              ]
+            },
+            "APPLIED_COUPONS": {
+              "type": "array",
+              "items": {}
+            }
+          },
+          "required": [
+            "QUANTITY",
+            "WEIGHT",
+            "BASE_PRICE",
+            "DISCOUNT_PRICE",
+            "DISCOUNT",
+            "BONUS_DATA",
+            "APPLIED_COUPONS"
+          ]
+        }
+      },
+      "required": [
+        "basket",
+        "total"
+      ]
+    }
+  },
+  "required": [
+    "type",
+    "value"
+  ]
+}

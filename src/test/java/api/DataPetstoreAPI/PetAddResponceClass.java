@@ -1,9 +1,5 @@
 package api.DataPetstoreAPI;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.ArrayList;
 
 public class PetAddResponceClass {
@@ -21,43 +17,44 @@ public class PetAddResponceClass {
         this.status = status;
     }
 
-    public PetAddResponceClass() {super();
+    public PetAddResponceClass() {
+        super();
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public ArrayList<String> getPhotoUrls() {
-        return photoUrls;
-    }
-
-    public ArrayList<Tags> getTags() {
-        return tags;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public ArrayList<String> getPhotoUrls() {
+        return photoUrls;
+    }
+
     public void setPhotoUrls(ArrayList<String> photoUrls) {
         this.photoUrls = photoUrls;
     }
 
+    public ArrayList<Tags> getTags() {
+        return tags;
+    }
+
     public void setTags(ArrayList<Tags> tags) {
         this.tags = tags;
+    }
+
+    public String getStatus() {
+        return status;
     }
 
     public void setStatus(String status) {

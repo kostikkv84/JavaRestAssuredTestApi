@@ -1,12 +1,5 @@
 package TestsUI;
 
-
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
-
 public class Tests {
   /*  private final String base_url = "https://yandex.ru";
 
@@ -19,7 +12,6 @@ public class Tests {
         Configuration.browserSize = "1700x900";
         Configuration.driverManagerEnabled = true;
         Configuration.headless = false;
-
     }
     @After
     public void tearDown(){

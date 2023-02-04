@@ -5,7 +5,9 @@ public class UpdateUserResponce {
     private String job;
     private String updatedAt;
 
-    public UpdateUserResponce() { super(); }
+    public UpdateUserResponce() {
+        super();
+    }
 
     public UpdateUserResponce(String name, String job, String updatedAt) {
         this.name = name;

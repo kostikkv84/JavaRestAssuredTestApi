@@ -16,6 +16,7 @@ public class UpdNamePetClass {
         this.status = status;
     }
 
-    public UpdNamePetClass() {super();
+    public UpdNamePetClass() {
+        super();
     }
 }

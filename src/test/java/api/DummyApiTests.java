@@ -4,16 +4,17 @@ import BaseCLasses.FileData;
 import api.DataApi.dummyapi.io.*;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Ignore;
+import org.testng.annotations.Test;
 import spec.SpecificationDummyApi;
 
 import java.io.IOException;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
+
 @Ignore
 public class DummyApiTests extends SpecificationDummyApi {
     /**
@@ -22,10 +23,9 @@ public class DummyApiTests extends SpecificationDummyApi {
 
     private final static String URL = "https://dummyapi.io/data/v1";
 
-    @Before
+    @BeforeTest
     public void setFilter() {
         RestAssured.filters(new AllureRestAssured());
-
     }
 
     @Test
@@ -51,7 +51,7 @@ public class DummyApiTests extends SpecificationDummyApi {
                 .then().log().body()
                 .extract().body().as(GetUserID.class);
         Assert.assertNotNull(getUser);
-        Assert.assertEquals("Id пользователя не найден", id, getUser.getId());
+        Assert.assertEquals(id, getUser.getId(),"Id пользователя не найден");
     }
 
     @Test
@@ -110,9 +110,9 @@ public class DummyApiTests extends SpecificationDummyApi {
 
     @Test
     public void putUpdateUser() throws IOException {
-        installSpecification(requestSpec(URL),specResponseOK200());
+        installSpecification(requestSpec(URL), specResponseOK200());
         String id = "60d0fe4f5311236168a109d6";
-        PutUpdateUserReq updateUser = new PutUpdateUserReq("TestName","TestLastName");
+        PutUpdateUserReq updateUser = new PutUpdateUserReq("TestName", "TestLastName");
         String idCreatedUser = new FileData().openAndRead();
         PutUpdateUserResp update = given()
                 .body(updateUser)

@@ -1,15 +1,6 @@
 package api;
 
-import io.restassured.path.json.JsonPath;
-//import org.asynchttpclient.Response;
-import org.junit.Test;
 import spec.Specifications;
-
-import java.net.URL;
-
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class ReqresWithOutPojo extends Specifications {
     private final static String URL = "https://reqres.in";

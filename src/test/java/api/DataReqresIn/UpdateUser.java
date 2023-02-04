@@ -17,12 +17,12 @@ public class UpdateUser {
         return name;
     }
 
-    public String getJob() {
-        return job;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getJob() {
+        return job;
     }
 
     public void setJob(String job) {
