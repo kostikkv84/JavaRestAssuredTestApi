@@ -146,6 +146,9 @@ public class Zarovednik96_Tests extends Specifications {
                 .then().log().all();
     }
 
+    /**
+     * Просмотр корзины с товарами
+     */
     @Test
     public void getFromBasketOrder(){
         installSpecification(requestSpec(URL),specResponseOK200());
