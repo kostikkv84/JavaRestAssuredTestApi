@@ -42,16 +42,20 @@ public class Zarovednik96_Tests extends Specifications {
         Assert.assertTrue(authorized);
     }
 
-    // Разобраться с авторизацией
+    /**
+     * Получить питомцев пользователя - Тест
+     */
     @Test (priority = 2)
     public void getPets() {
-        installSpecification(requestSpec(URL), specResponseError401());
-        given()
-
+        installSpecification(requestSpec(URL), specResponseOK200());
+        List<String> resp = given()
+                .auth()
+                .preemptive().basic("79788065898", "260805")
                 .when()
                 .get(URL + "/api/sale/pet/get/")
-                .then().log().all();
-        //  .extract().body().jsonPath().getList(String.valueOf(GetPetsInfo.class));
+                .then().log().all()
+                .extract().body().path("value.pets[0].id");
+        System.out.println(resp);
     }
 
     /**
@@ -61,10 +65,9 @@ public class Zarovednik96_Tests extends Specifications {
     public void forgetEmail() {
         installSpecification(requestSpec(URL), specResponseOK200());
         List<String> forgetEmail = given()
-                .contentType("multipart/form-data")
-                .multiPart("email", "koskv@list.ru")
+                .body("\"email\": \"koskv@list.ru\"")
                 .when()
-                .get(URL + "/api/personal/user/forgot/")
+                .post(URL + "/api/personal/user/forgot/")
                 .then().log().all()
                 .extract().path("value");
         System.out.println(forgetEmail);

@@ -8,9 +8,12 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
+import static io.restassured.RestAssured.basic;
+
 public class Specifications {
     // Запрос спецификация
     public static RequestSpecification requestSpec(String url) {
+        RestAssured.authentication = basic("username", "password");
         return new RequestSpecBuilder()
                 .setBaseUri(url)
                 .setContentType(ContentType.JSON)
