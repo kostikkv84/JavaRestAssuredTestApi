@@ -60,8 +60,6 @@
             <version>7.7.1</version>
             <scope>test</scope>
         </dependency>
-
-
         <!-- JSON Dependency -->
         <dependency>
             <groupId>org.json</groupId>
@@ -103,14 +101,14 @@
                 <version>${maven-surefire-plugin-version}</version>
                 <configuration>
                     <testFailureIgnore>false</testFailureIgnore>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>TestNG.xml</suiteXmlFile>
+                    </suiteXmlFiles>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <properties>
-                        <property>
-                            <name>listener</name>
-                            <value>io.qameta.allure.junit4.AllureJunit4</value>
-                        </property>
+
                     </properties>
                 </configuration>
                 <dependencies>

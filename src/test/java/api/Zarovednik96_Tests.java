@@ -155,17 +155,18 @@ public class Zarovednik96_Tests extends Specifications {
      * СОздание записи к ветеринару - Тест
      */
     @Test
-    @Ignore
+
     public void postCreateAppointment() {
         installSpecification(requestSpec(URL), specResponseOK200());
-        given().contentType("multipart/form-data")
-                .multiPart("login", "79788065898")
-                .multiPart("password", "260805")
-                .param("acceptPolicy", true)
-                .param("comment", "comment")
-                .param("cabinetId", "197")
-                .param("pet_id", "458715")
-                .param("date", "2023-02-16T11:00:00")
+        given()
+                .auth()
+                .preemptive().basic("79788065898", "260805")
+                .contentType("multipart/form-data")
+                .multiPart("acceptPolicy", true)
+                .multiPart("comment", "comment")
+                .multiPart("cabinetId", "197")
+                .multiPart("pet_id", "458715")
+                .multiPart("date", "2023-02-08T08:00:00")
                 .when()
                 .post(URL + "/api/vet_cabinets/record/create/")
                 .then().log().all();
