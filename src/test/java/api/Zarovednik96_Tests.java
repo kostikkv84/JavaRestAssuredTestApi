@@ -20,6 +20,8 @@ public class Zarovednik96_Tests extends Specifications {
     private final static String URL = "https://itgro-dev1-z.stage.ext.itgro.dev";
     private final static String LOGIN = "79788065898";
     private final static String PASSWORD = "260805";
+    private String idOrder = "";
+    private String idItem = "312882";
 
     @BeforeTest
     public void setFilter() {
@@ -29,7 +31,7 @@ public class Zarovednik96_Tests extends Specifications {
     /**
      * Тест успешной авторизации
      */
-    @Test (priority = 1)
+    @Test (priority = 4)
     public void loginSuccessTest() {
         installSpecification(requestSpec(URL), specResponseOK200());
         Boolean authorized = given().contentType("multipart/form-data")
@@ -45,7 +47,7 @@ public class Zarovednik96_Tests extends Specifications {
     /**
      * Получить питомцев пользователя - Тест
      */
-    @Test (priority = 2)
+    @Test (priority = 4)
     public void getPets() {
         installSpecification(requestSpec(URL), specResponseOK200());
         List<String> resp = given()
@@ -61,7 +63,7 @@ public class Zarovednik96_Tests extends Specifications {
     /**
      * Отправка запроса на восстановление пароля при указании Email - Тест
      */
-    @Test
+    @Test (priority = 4)
     public void forgetEmail() {
         installSpecification(requestSpec(URL), specResponseOK200());
         List<String> forgetEmail = given()
@@ -77,7 +79,7 @@ public class Zarovednik96_Tests extends Specifications {
     /**
      * Восстановление пароля если не указать Email - Тест
      */
-    @Test
+    @Test (priority = 4)
     public void emailSHoudBeExistTest() {
         installSpecification(requestSpec(URL), specResponseOK200());
         List<String> forgetEmail = given()
@@ -93,7 +95,7 @@ public class Zarovednik96_Tests extends Specifications {
     /**
      * Тест НЕ успешной авторизации без пароля
      */
-    @Test
+    @Test (priority = 4)
     public void ErrorPassTest() {
         installSpecification(requestSpec(URL), specResponseOK200());
         List<String> error = given().contentType("multipart/form-data")
@@ -108,7 +110,7 @@ public class Zarovednik96_Tests extends Specifications {
     /**
      * Тест НЕ успешной авторизации без логина
      */
-    @Test
+    @Test (priority = 4)
     public void ErrorLoginTest() {
         installSpecification(requestSpec(URL), specResponseOK200());
         List<String> error = given().contentType("multipart/form-data")
@@ -123,7 +125,7 @@ public class Zarovednik96_Tests extends Specifications {
     /**
      * Проверка ответа по свободному времени приема
      */
-    @Test
+    @Test (priority = 4)
     public void getFreeTimeSlots() {
         installSpecification(requestSpec(URL), specResponseOK200());
         List<ArrayList> list = given()
@@ -138,7 +140,7 @@ public class Zarovednik96_Tests extends Specifications {
     /**
      * Запрос вет клиник по городу - Тест
      */
-    @Test
+    @Test (priority = 4)
     public void getShopCityFilter() {
         installSpecification(requestSpec(URL), specResponseOK200());
         String list = given()
@@ -146,19 +148,18 @@ public class Zarovednik96_Tests extends Specifications {
                 .when()
                 .get(URL + "/api/sale/vet/get/")
                 .then().log().all()
-                .extract().path("value.vet[0].SHOP_CITY");
+                .extract().path("value.vet[1].SHOP_CITY");
         System.out.println(list);
         Assert.assertEquals("Екатеринбург", list);
     }
 
     /**
-     * СОздание записи к ветеринару - Тест
+     * Запись к ветеринару, если время занято - Тест
      */
-    @Test
-
-    public void postCreateAppointment() {
+    @Test (priority = 4)
+    public void postCreateAppointmentTimeIsBusy() {
         installSpecification(requestSpec(URL), specResponseOK200());
-        given()
+        String error = given()
                 .auth()
                 .preemptive().basic("79788065898", "260805")
                 .contentType("multipart/form-data")
@@ -169,24 +170,73 @@ public class Zarovednik96_Tests extends Specifications {
                 .multiPart("date", "2023-02-08T08:00:00")
                 .when()
                 .post(URL + "/api/vet_cabinets/record/create/")
-                .then().log().all();
+                .then().log().all()
+                 .extract().path("value");
+        Assert.assertTrue(error.contains("Время занято"));
+    }
+
+    //------------------- Работа с корзиной -----------------------------------------
+    /**
+     * Добавить товар в корзину
+     */
+    @Test (priority = 1)
+    public void addItemToBasket(){
+        installSpecification(requestSpec(URL),specResponseOK200());
+        String count = "/1/";
+        String prodId = given()
+                .auth()
+                .preemptive().basic("79788065898", "260805")
+                .when()
+                .get(URL + "/api/sale/basket/add/" + idItem + count)
+                .then().log().all()
+                .extract().body().path("value.basket[0].ID");
+        idOrder = prodId;
+        System.out.println(idOrder);
+        Assert.assertFalse(prodId.isEmpty());
     }
 
     /**
-     * Просмотр корзины с товарами
+     * Просмотр корзины с товарами, зарегистрированного пользователя
      */
-    @Test
+    @Test (priority = 2)
     public void getFromBasketOrder(){
         installSpecification(requestSpec(URL),specResponseOK200());
-        given()
-                .contentType("multipart/form-data")
-                .multiPart("login", "79788065898")
-                .multiPart("password", "260805")
+        String resp = given()
+                .auth()
+                .preemptive().basic("79788065898", "260805")
                 .when()
                 .get(URL + "/api/sale/basket/get/")
                 .then().log().all()
-                .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("96_CartSchema.json"));
+                .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("96_CartSchema.json"))
+                .extract().path("value.basket[0].ID");
+        Assert.assertTrue(resp.contains(idOrder));
     }
+
+    /**
+     * Удаление товара из корзины - Тест
+     */
+    @Test (priority = 3)
+    public void deleteFromBasketOrder(){
+        installSpecification(requestSpec(URL),specResponseOK200());
+        Integer resp = given()
+                .auth()
+                .preemptive().basic("79788065898", "260805")
+                .when()
+                .get(URL + "/api/sale/basket/delete/" + idOrder)
+                .then().log().all()
+               // .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("96_CartSchema.json"))
+                .extract().path("value.total.QUANTITY");
+        System.out.println(resp);
+        Assert.assertEquals(resp,0);
+    }
+
+
+
+
+
+
+
+
 }
 
 

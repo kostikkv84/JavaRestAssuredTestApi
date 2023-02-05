@@ -121,6 +121,9 @@ public class ReqresInTest extends Specifications {
         Assert.assertEquals("Ожидаемый токен соответствует токену в ответе", token, successLogin.getToken());
     }
 
+    /**
+     * Отсутствие пароля при регистрации
+     */
     @Test
     public void unsuccessfulLoginTest() {
         installSpecification(requestSpec(URL), specResponseError400());

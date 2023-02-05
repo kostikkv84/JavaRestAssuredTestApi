@@ -1,2 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="E:/JavaProject/JavaRestAssured"><classes><class name="TestsUI.Tests"><methods><include name="check"/></methods></class><class name="api.DummyApiTests"><methods><include name="checkGetUsersListAndTestID"/><include name="checkGetUserID"/><include name="checkGetUserIdError"/><include name="checkPicturesUrl"/><include name="checkCreateUser"/><include name="putUpdateUser"/><include name="checkDeleteUser"/></methods></class><class name="api.PetSHopTests"><methods><include name="getPetId"/><include name="petNotFoundTest"/><include name="getAvailablePets"/><include name="getPendingPets"/><include name="getSoldPets"/><include name="addPetTest"/><include name="updateNamePetTest"/></methods></class><class name="api.ReqresInTest"><methods><include name="checkAvatarAndId"/><include name="checkEmails"/><include name="successRegisterTest"/><include name="unsuccessfulRegisterTest"/><include name="loginTest"/><include name="unsuccessfulLoginTest"/><include name="updateUserTest"/><include name="yearSortedTest"/><include name="deleteTest"/><include name="timeUpdateTest"/></methods></class><class name="api.Zarovednik96_Tests"><methods><include name="getPets"/><include name="forgetEmail"/><include name="loginSuccessTest"/><include name="ErrorPassTest"/><include name="ErrorLoginTest"/><include name="getFreeTimeSlots"/><include name="getShopCityFilter"/><include name="postCreateAppointment"/></methods></class></classes></test></suite>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+    <suite name="All Test Suite">
+        <test verbose="2" preserve-order="true" name="E:/JavaProject/JavaRestAssured">
+            <classes>
+                <class name="TestsUI.Tests">
+                    <methods>
+                        <include name="check"/>
+                    </methods>
+                </class>
+                <class name="api.DummyApiTests">
+                    <methods>
+                        <include name="checkGetUsersListAndTestID"/>
+                        <include name="checkGetUserID"/><include name="checkGetUserIdError"/>
+                        <include name="checkPicturesUrl"/><include name="checkCreateUser"/>
+                        <include name="putUpdateUser"/><include name="checkDeleteUser"/>
+                    </methods></class>
+                <class name="api.PetSHopTests">
+                    <methods>
+                        <include name="getPetId"/>
+                        <include name="petNotFoundTest"/><include name="getAvailablePets"/>
+                        <include name="getPendingPets"/>
+                        <include name="getSoldPets"/>
+                        <include name="addPetTest"/>
+                        <include name="updateNamePetTest"/>
+                    </methods>
+                </class>
+                <class name="api.ReqresInTest">
+                    <methods>
+                        <include name="checkAvatarAndId"/>
+                        <include name="checkEmails"/>
+                        <include name="successRegisterTest"/>
+                        <include name="unsuccessfulRegisterTest"/>
+                        <include name="loginTest"/>
+                        <include name="unsuccessfulLoginTest"/>
+                        <include name="updateUserTest"/>
+                        <include name="yearSortedTest"/>
+                        <include name="deleteTest"/>
+                        <include name="timeUpdateTest"/>
+                    </methods>
+                </class>
+                <class name="api.Zarovednik96_Tests">
+                    <methods>
+                        <include name="getPets"/>
+                        <include name="forgetEmail"/>
+                        <include name="loginSuccessTest"/>
+                        <include name="ErrorPassTest"/>
+                        <include name="ErrorLoginTest"/>
+                        <include name="getFreeTimeSlots"/>
+                        <include name="getShopCityFilter"/>
+                        <include name="postCreateAppointment"/>
+                    </methods>
+                </class>
+            </classes>
+        </test>
+</suite>
