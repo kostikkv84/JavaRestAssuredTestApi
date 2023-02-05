@@ -46,9 +46,14 @@
                         <include name="loginSuccessTest"/>
                         <include name="ErrorPassTest"/>
                         <include name="ErrorLoginTest"/>
+                        <include name="emailSHoudBeExistTest"/>
                         <include name="getFreeTimeSlots"/>
                         <include name="getShopCityFilter"/>
                         <include name="postCreateAppointment"/>
+                        <include name="postCreateAppointmentTimeIsBusy"/>
+                        <include name="addItemToBasket"/>
+                        <include name="getFromBasketOrder"/>
+                        <include name="deleteFromBasketOrder"/>
                     </methods>
                 </class>
             </classes>

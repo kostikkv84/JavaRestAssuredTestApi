@@ -50,14 +50,15 @@ public class Zarovednik96_Tests extends Specifications {
     @Test (priority = 4)
     public void getPets() {
         installSpecification(requestSpec(URL), specResponseOK200());
-        List<String> resp = given()
+        Integer resp = given()
                 .auth()
                 .preemptive().basic("79788065898", "260805")
                 .when()
                 .get(URL + "/api/sale/pet/get/")
                 .then().log().all()
-                .extract().body().path("value.pets[0].id");
+                .extract().body().path("value.pets[0].ID");
         System.out.println(resp);
+        Assert.assertEquals(resp,457165);
     }
 
     /**
@@ -229,12 +230,6 @@ public class Zarovednik96_Tests extends Specifications {
         System.out.println(resp);
         Assert.assertEquals(resp,0);
     }
-
-
-
-
-
-
 
 
 }
