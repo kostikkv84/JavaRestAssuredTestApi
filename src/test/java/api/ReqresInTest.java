@@ -118,7 +118,7 @@ public class ReqresInTest extends Specifications {
                 .post("/api/login")
                 .then().log().all()
                 .extract().as(SuccessLogin.class);
-        Assert.assertEquals("Ожидаемый токен соответствует токену в ответе", token, successLogin.getToken());
+        Assert.assertEquals(token, successLogin.getToken(),"Ожидаемый токен соответствует токену в ответе");
     }
 
     /**
@@ -138,7 +138,7 @@ public class ReqresInTest extends Specifications {
                 .then().log().all()
                 .extract().as(LoginError.class);
         System.out.println(loginError.getError());
-        Assert.assertEquals("Результат не соответствует ожидаемому", error, loginError.getError());
+        Assert.assertEquals(error, loginError.getError(), "Результат не соответствует ожидаемому");
     }
 
     /**
