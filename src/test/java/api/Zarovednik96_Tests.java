@@ -120,6 +120,7 @@ public class Zarovednik96_Tests extends Specifications {
                 .post(URL + "/api/personal/user/auth/")
                 .then().log().all()
                 .extract().path("value");
+        System.out.println(error);
         Assert.assertTrue(error.contains("Не заполнено обязательное поле `Логин`"));
     }
 
